@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scla=1" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <section class="password-generator">
+        <h1>Password Generator</h1>
+        <div class="password-display">
+          <input type="number" class="password-number" />
+          <button class="copy-btn" aria-label="Copy password">
+            <span class="sr-only">Copier le mot de passe</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path
+                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </section>
+      <section class="password">
+        <div>
+          <label>Character lenght </label>
+          <input type="number" />
+          <div>
+            <input type="range" />
+          </div>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            name="uppercase-letter"
+            id="uppercase-letter"
+          />
+          <label> Include uppercase letter</label>
+          <input
+            type="checkbox"
+            name="lowercase-letter"
+            id="lowercase-letter"
+          />
+          <label> Include lowercasee letter</label>
+          <input type="checkbox" name="number" id="number" />
+          <label> Include Numbers</label>
+          <input type="checkbox" name="symbole" id="symbole" />
+          <label> Include Symboles</label>
+        </div>
+        <div class="strength" id="strength">
+          <span class="strength-label">STRENGTH</span>
+          <span class="strength-text" id="strength-text" aria-live="polite"
+            >TOO WEAK!</span
+          >
+
+          <div class="strength-bars" aria-hidden="true">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </section>
+      <button>GENERATOR -></button>
+    </main>
+  </body>
+</html>
