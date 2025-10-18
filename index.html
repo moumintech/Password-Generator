@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scla=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -10,15 +10,27 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <main>
-      <section class="password-generator">
-        <h1>Password Generator</h1>
-        <div class="password-display">
-          <input type="number" class="password-number" />
-          <button class="copy-btn" aria-label="Copy password">
-            <span class="sr-only">Copier le mot de passe</span>
+      <section class="password-generator" aria-labelledby="title">
+        <h1 id="title">Password Generator</h1>
 
+        <!-- Display -->
+        <div class="password-display">
+          <input
+            id="password"
+            class="password-output"
+            type="text"
+            placeholder=""
+            readonly
+            aria-label="Generated password"
+            autocomplete="off"
+            inputmode="none"
+          />
+
+          <button class="copy-btn" type="button" aria-label="Copy password">
+            <span class="sr-only">Copier le mot de passe</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -29,6 +41,7 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path
@@ -38,37 +51,70 @@
           </button>
         </div>
       </section>
-      <section class="password">
-        <div>
-          <label>Character lenght </label>
-          <input type="number" />
-          <div>
-            <input type="range" />
+
+      <section class="password-controls">
+        <div class="length-row">
+          <label for="charLen">Character length</label>
+          <output id="charLenValue" for="charLen">12</output>
+          <input
+            id="charLen"
+            name="charLen"
+            type="range"
+            min="4"
+            max="64"
+            step="1"
+            value="12"
+            aria-describedby="charLenHelp"
+          />
+          <p id="charLenHelp" class="sr-only">
+            Choose a value between 4 and 64 characters.
+          </p>
+        </div>
+
+        <fieldset class="options">
+          <legend>Include</legend>
+
+          <div class="option">
+            <input type="checkbox" id="optUpper" name="options" value="upper" />
+            <label for="optUpper">Uppercase letters</label>
           </div>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            name="uppercase-letter"
-            id="uppercase-letter"
-          />
-          <label> Include uppercase letter</label>
-          <input
-            type="checkbox"
-            name="lowercase-letter"
-            id="lowercase-letter"
-          />
-          <label> Include lowercasee letter</label>
-          <input type="checkbox" name="number" id="number" />
-          <label> Include Numbers</label>
-          <input type="checkbox" name="symbole" id="symbole" />
-          <label> Include Symboles</label>
-        </div>
+
+          <div class="option">
+            <input type="checkbox" id="optLower" name="options" value="lower" />
+            <label for="optLower">Lowercase letters</label>
+          </div>
+
+          <div class="option">
+            <input
+              type="checkbox"
+              id="optNumber"
+              name="options"
+              value="number"
+            />
+            <label for="optNumber">Numbers</label>
+          </div>
+
+          <div class="option">
+            <input
+              type="checkbox"
+              id="optSymbol"
+              name="options"
+              value="symbol"
+            />
+            <label for="optSymbol">Symbols</label>
+          </div>
+        </fieldset>
+
         <div class="strength" id="strength">
           <span class="strength-label">STRENGTH</span>
-          <span class="strength-text" id="strength-text" aria-live="polite"
-            >TOO WEAK!</span
+          <span
+            class="strength-text"
+            id="strength-text"
+            role="status"
+            aria-live="polite"
           >
+            TOO WEAK!
+          </span>
 
           <div class="strength-bars" aria-hidden="true">
             <span class="bar"></span>
@@ -77,8 +123,12 @@
             <span class="bar"></span>
           </div>
         </div>
+
+        <button id="generateBtn" class="generate-btn" type="button">
+          GENERATE →
+        </button>
       </section>
-      <button>GENERATOR -></button>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
